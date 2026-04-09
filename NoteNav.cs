@@ -47,5 +47,10 @@ namespace Note_App__CRUD_
             Notes addForm = new Notes();
             addForm.ShowDialog();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = handler.SearchNotes(textBox1.Text);
+        }
     }
 }

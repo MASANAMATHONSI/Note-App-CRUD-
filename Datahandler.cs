@@ -16,10 +16,29 @@ namespace Note_App__CRUD_
 
         public DataTable ViewAll()
         {
-           string query = "SELECT * FROM Notes";
-           SqlDataAdapter da=new SqlDataAdapter(query, conn);
+            string query = "SELECT * FROM Notes";
+            SqlDataAdapter da = new SqlDataAdapter(query, conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
+            return dt;
+        }
+    
+
+    public DataTable SearchNotes(string searchTerm)
+        {
+            string query = "SELECT * FROM Notes WHERE Title LIKE @search";
+            DataTable dt = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(conn))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    
+                    cmd.Parameters.AddWithValue("@search", "%" + searchTerm + "%");
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            }
             return dt;
         }
     }

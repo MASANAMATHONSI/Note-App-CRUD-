@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NoteNav.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoteNav.Designer.cs">
+      <DependentUpon>NoteNav.cs</DependentUpon>
+    </Compile>
     <Compile Include="Notes.cs">
       <SubType>Form</SubType>
     </Compile>

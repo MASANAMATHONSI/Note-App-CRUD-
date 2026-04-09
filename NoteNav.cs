@@ -27,5 +27,25 @@ namespace Note_App__CRUD_
         {
             this.Close();
         }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+
+                string title = row.Cells["Title"].Value?.ToString() ?? "No Title";
+                string content = row.Cells["Content"].Value?.ToString() ?? "";
+
+                Notes detailForm = new Notes(title, content);
+                detailForm.ShowDialog();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Notes addForm = new Notes();
+            addForm.ShowDialog();
+        }
     }
 }

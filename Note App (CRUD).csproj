@@ -64,6 +64,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="NoteNav.resx">
+      <DependentUpon>NoteNav.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Notes.resx">
       <DependentUpon>Notes.cs</DependentUpon>
     </EmbeddedResource>

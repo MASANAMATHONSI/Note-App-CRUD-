@@ -12,9 +12,15 @@ namespace Note_App__CRUD_
 {
     public partial class NoteNav : Form
     {
+        Datahandler handler=new Datahandler();
         public NoteNav()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = handler.ViewAll();
         }
     }
 }

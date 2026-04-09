@@ -22,5 +22,10 @@ namespace Note_App__CRUD_
         {
             dataGridView1.DataSource = handler.ViewAll();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -10,8 +10,10 @@ using System.Windows.Forms;
 
 namespace Note_App__CRUD_
 {
+
     public partial class Notes : Form
     {
+        private int currentNoteId = 0;
         public Notes()
         {
             InitializeComponent();
@@ -40,6 +42,23 @@ namespace Note_App__CRUD_
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Datahandler handler = new Datahandler();
+
+            if (currentNoteId == 0)
+            {
+                handler.AddNote(textBox1.Text, textBox2.Text);
+                MessageBox.Show("New Note Created!");
+            }
+            else
+            {
+                handler.EditNote(currentNoteId, textBox1.Text, textBox2.Text);
+                MessageBox.Show("Note Updated!");
+            }
             this.Close();
         }
     }

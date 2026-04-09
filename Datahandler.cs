@@ -22,9 +22,9 @@ namespace Note_App__CRUD_
             da.Fill(dt);
             return dt;
         }
-    
 
-    public DataTable SearchNotes(string searchTerm)
+
+        public DataTable SearchNotes(string searchTerm)
         {
             string query = "SELECT * FROM Notes WHERE Title LIKE @search";
             DataTable dt = new DataTable();
@@ -33,13 +33,44 @@ namespace Note_App__CRUD_
             {
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    
+
                     cmd.Parameters.AddWithValue("@search", "%" + searchTerm + "%");
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     da.Fill(dt);
                 }
             }
             return dt;
+        }
+
+
+        public void AddNote(string title, string content)
+        {
+            string query = "INSERT INTO Notes (Title, Content) VALUES (@Title, @Content)";
+            using (SqlConnection con = new SqlConnection(conn))
+            {
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Title", title);
+                cmd.Parameters.AddWithValue("@Content", content);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+
+        public void EditNote(int id, string title, string content)
+        {
+            string query = "UPDATE Notes SET Title = @Title, Content = @Content WHERE ID = @ID";
+
+            using (SqlConnection con = new SqlConnection(conn))
+            {
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@ID", id);
+                cmd.Parameters.AddWithValue("@Title", title);
+                cmd.Parameters.AddWithValue("@Content", content);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }

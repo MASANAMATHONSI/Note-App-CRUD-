@@ -72,5 +72,18 @@ namespace Note_App__CRUD_
                 cmd.ExecuteNonQuery();
             }
         }
+        public void DeleteNote(int id)
+        {
+            string query = "DELETE FROM Notes WHERE ID = @ID";
+
+            using (SqlConnection con = new SqlConnection(conn))
+            {
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@ID", id);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

@@ -59,7 +59,28 @@ namespace Note_App__CRUD_
                 handler.EditNote(currentNoteId, textBox1.Text, textBox2.Text);
                 MessageBox.Show("Note Updated!");
             }
-            this.Close();
+            
         }
-    }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (currentNoteId > 0)
+            {
+               
+                DialogResult confirm = MessageBox.Show("Delete this note permanently?", "Confirm", MessageBoxButtons.YesNo);
+
+                if (confirm == DialogResult.Yes)
+                {
+                    Datahandler handler = new Datahandler();
+                    handler.DeleteNote(currentNoteId);
+                    this.Close();
+                }
+            }
+            else
+            {
+               
+                this.Close();
+            }
+        }
+        }
 }

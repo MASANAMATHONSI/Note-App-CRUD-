@@ -45,7 +45,8 @@ namespace Note_App__CRUD_
         private void button3_Click(object sender, EventArgs e)
         {
             Notes addForm = new Notes();
-            addForm.ShowDialog();
+            addForm.ShowDialog(); 
+            dataGridView1.DataSource = new Datahandler().ViewAll();
         }
 
         private void button2_Click(object sender, EventArgs e)
